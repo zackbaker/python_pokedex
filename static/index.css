@@ -1,0 +1,43 @@
+.pokemon {
+    width: 15%;
+    float: left;
+    margin-left: 8%;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.poke_id {
+    float: left;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.sprite {
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    display: block;
+}
+
+.name {
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
