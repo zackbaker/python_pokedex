@@ -1,7 +1,11 @@
 from flask import Flask
-app = Flask(__name__)
+from flask_caching import Cache
+
+pokedex = Flask(__name__)
+cache = Cache()
+cache.init_app(pokedex)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!!!!!'
+@pokedex.route('/')
+def pokemon_list():
+    return 'Hello World!!!'
