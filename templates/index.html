@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex Scroll</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div>
+        {% for pokemon in pokemons %}
+            <div class="pokemon">
+                <img src="{{ pokemon.sprite }}" class="sprite" />
+                <h4 class="poke_id"> {{ pokemon.id }} </h4>
+                <h2 class="name text"> Name: {{ pokemon.name }} </h2>
+                <div class="abilities text">
+                    <strong> Abilities: </strong> &nbsp; {% for ability in pokemon.abilities %} {{ ability }} &nbsp; {% endfor %}
+                </div>
+                <div class="types text">
+                    <strong> Type: </strong> &nbsp; {% for type in pokemon.types %} {{ type }} &nbsp; {% endfor %}
+                </div>
+                <div class="height text"> {{ pokemon.height }} </div>
+                <div class="weight text"> {{ pokemon.weight }} </div>
+                <a href="/pokemon/{{ pokemon.id }}" class="text"> <button> View </button> </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="pageSelection">
+        {% if prev_page %}
+            <a href="/{{ page - 1 }}" id="back"><button>Back</button></a>
+        {% endif %}
+        {% if next_page %}
+            <a href="/{{ page + 1 }}" id="next"><button>Next</button></a>
+        {% endif %}
+    </div>
+</body>
+</html>
