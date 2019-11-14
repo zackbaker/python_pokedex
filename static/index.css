@@ -1,7 +1,7 @@
 .pokemon {
-    width: 15%;
+    width: 20%;
     float: left;
-    margin-left: 8%;
+    margin-left: 4%;
     margin-bottom: 35px;
     position: relative;
 }
@@ -40,4 +40,21 @@ button {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+#pageSelection {
+    clear: both;
+}
+
+#back, #next {
+    display: block;
+    width: 15%;
+}
+
+#back {
+    float: left;
+}
+
+#next {
+    float: right;
 }
