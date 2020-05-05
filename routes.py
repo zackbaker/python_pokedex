@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template
 from flask_caching import Cache
 
 from api.pokemon_view import PokemonView
@@ -24,9 +24,10 @@ def pokemon_scroll(page=1):
     )
 
 
-@pokedex.route('/pokemon/<id>')
-def pokemon(id):
+@pokedex.route('/pokemon/<id>/<page_from>')
+def pokemon(id, page_from):
     return render_template(
         'pokemon.html',
-        pokemon=PokemonView().get_pokemon(id)
+        pokemon=PokemonView().get_pokemon(id),
+        return_page=page_from
     )

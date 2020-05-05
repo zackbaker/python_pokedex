@@ -90,7 +90,8 @@ class Pokemon:
         for move in moves:
             moves_list.append({
                 'name': move['move']['name'],
-                'level_learned_at': move['version_group_details'][0]['level_learned_at']}
+                'level_learned_at': move['version_group_details'][0]['level_learned_at'],
+                'learned_by': move['version_group_details'][0]['move_learn_method']['name']}
             )
 
-        return moves_list
+        return sorted(moves_list, key=lambda move: move['level_learned_at'])

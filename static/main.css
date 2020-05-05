@@ -1,0 +1,38 @@
+.float-left {
+    float: left;
+    margin-right: 15px;
+}
+
+.container {
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.float-div {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    border: 1px solid grey;
+    padding: 15px;
+    margin-top: -1px;
+}
+
+.back-arrow {
+    height: 10px;
+}
+
+.back-button {
+    font-size: 25px;
+}
