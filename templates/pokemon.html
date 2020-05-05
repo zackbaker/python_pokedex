@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pokemon.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pokemon.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="/{{ return_page }}" class="text">
+            <button class="back-button">
+                Back
+            </button>
+        </a>
+        <img src="{{ pokemon.sprite }}" class="sprite" />
+        <h2 class="name text"><center> Name: {{ pokemon.name }} </center></h2>
+        <div class="center">
+            <div class="abilities text float-div">
+                <strong> Abilities: </strong> &nbsp; {% for ability in pokemon.abilities %} {{ ability }} &nbsp; {% endfor %}
+            </div>
+            <div class="types text float-div">
+                <strong> Type: </strong> &nbsp; {% for type in pokemon.types %} {{ type }} &nbsp; {% endfor %}
+            </div>
+            <div class="height text float-div"> <strong> Height </strong> {{ pokemon.height }} </div>
+            <div class="weight text float-div"> <strong> Weight </strong> {{ pokemon.weight }} </div>
+        </div>
+        <div><strong> Stats: </strong></div>
+        <ul>
+            {% for stat in pokemon.stats %}
+                <li class="center"><strong> {{ stat.name }} </strong> : {{ stat.base_stat }}</li>
+            {% endfor %}
+        </ul>
+        <div><strong> Moves: </strong></div>
+        <ul>
+            {% for move in pokemon.moves %}
+                <li class="center">
+                    <strong> {{ move.name }} </strong> - Level: {{ move.level_learned_at }} - Learned By: {{ move.learned_by }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
