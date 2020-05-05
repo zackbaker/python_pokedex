@@ -31,3 +31,22 @@ def pokemon(id, page_from):
         pokemon=PokemonView().get_pokemon(id),
         return_page=page_from
     )
+
+
+@pokedex.route('/search/<pokemon_search>')
+def search(pokemon_search):
+    pokemon = [PokemonView().get_pokemon(pokemon_search)]
+
+    if pokemon[0] is not None:
+        return render_template(
+            'index.html',
+            pokemons=pokemon,
+            prev_page=False,
+            next_pate=False
+        )
+    else:
+        return render_template(
+            'index.html',
+            prev_page=False,
+            next_pate=False
+        )

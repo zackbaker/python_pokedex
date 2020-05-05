@@ -18,6 +18,10 @@ class Pokemon:
     def set_pokemon(self, pokemon):
         pokeapi = Pokeapi()
         pokemon_json = pokeapi.get_pokemon(pokemon)
+
+        if len(pokemon_json) < 1:
+            return None
+
         self.id = pokemon_json['id']
         self.name = pokemon_json['name'].capitalize()
         self.sprite = self.find_sprite(pokemon_json['sprites'])

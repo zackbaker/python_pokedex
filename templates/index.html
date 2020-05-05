@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Pokedex Scroll</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <div>
-        {% for pokemon in pokemons %}
-            <div class="pokemon">
-                <img src="{{ pokemon.sprite }}" class="sprite" />
-                <h4 class="poke_id"> {{ pokemon.id }} </h4>
-                <h2 class="name text"> Name: {{ pokemon.name }} </h2>
-                <div class="abilities text">
-                    <strong> Abilities: </strong> &nbsp; {% for ability in pokemon.abilities %} {{ ability }} &nbsp; {% endfor %}
+        <input id="search-input" class="search" type="text" name="pokemon" placeholder="Insert Pokemon Name or ID">
+        <button class="search-button" onclick="clickFunc()"> Search </button>
+    </div>
+    <div>
+        {% if pokemons is defined %}
+            {% for pokemon in pokemons %}
+                <div class="pokemon">
+                    <img src="{{ pokemon.sprite }}" class="sprite" />
+                    <h4 class="poke_id"> {{ pokemon.id }} </h4>
+                    <h2 class="name text"> Name: {{ pokemon.name }} </h2>
+                    <div class="abilities text">
+                        <strong> Abilities: </strong> &nbsp; {% for ability in pokemon.abilities %} {{ ability }} &nbsp; {% endfor %}
+                    </div>
+                    <div class="types text">
+                        <strong> Type: </strong> &nbsp; {% for type in pokemon.types %} {{ type }} &nbsp; {% endfor %}
+                    </div>
+                    <div class="height text"> {{ pokemon.height }} </div>
+                    <div class="weight text"> {{ pokemon.weight }} </div>
+                    <a href="/pokemon/{{ pokemon.id }}/{{ page }}" class="text"> <button> View </button> </a>
                 </div>
-                <div class="types text">
-                    <strong> Type: </strong> &nbsp; {% for type in pokemon.types %} {{ type }} &nbsp; {% endfor %}
-                </div>
-                <div class="height text"> {{ pokemon.height }} </div>
-                <div class="weight text"> {{ pokemon.weight }} </div>
-                <a href="/pokemon/{{ pokemon.id }}/{{ page }}" class="text"> <button> View </button> </a>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            No pokemon found by that name or ID
+        {% endif %}
     </div>
     <div id="pageSelection">
         {% if prev_page %}
@@ -34,3 +43,10 @@
     </div>
 </body>
 </html>
+
+<script>
+    function clickFunc() {
+        pokemon = document.getElementById("search-input").value.toLowerCase()
+        window.location.href = "/search/" + pokemon
+    }
+</script>
